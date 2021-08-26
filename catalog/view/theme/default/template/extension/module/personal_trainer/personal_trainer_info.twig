@@ -1,0 +1,276 @@
+{{ header }}
+<div class="container">
+    <div class="pdp trainer-pdb">
+        <nav class="pdp__breadcrumbs trainer-pdb" id="breadcrumb-trainer">
+            {% for breadcrumb in breadcrumbs %}
+                <a href="{{ trainers }}">{{ heading_title }}</a>
+                <span>{{ breadcrumb.text }}</span>
+            {% endfor %}
+        </nav>
+    </div>
+    <div class="row">{{ column_left }}
+        {% if column_left and column_right %}
+            {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+            {% set class = 'col-sm-9' %}
+        {% else %}
+            {% set class = 'col-sm-12' %}
+        {% endif %}
+        <div class="{{ class }} has-mt-32 row-mb">{{ content_top }}
+            {% for personal_trainers in personal_trainer %}
+                {% if personal_trainers.image %}
+                    <div class="bg-text">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="trainer-image">
+                                    <img src="{{ personal_trainers.image }}" alt="personal_trainer" />
+                                    <div class="ha-btn-link text-center">
+                                        <a href="{{ trainer_link }}" class="btn btn-account-submit btn-text">{{ text_buy_lesson }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-8 mobile-text">
+                                <div class="has-mt-24 has-mb-24 has-pd-20">
+                                    <div class="name">{{ personal_trainers.first_name }}<span class="text-uppercase">&nbsp;{{ personal_trainers.last_name }}</span> </div>
+                                    <div class="job">{{ personal_trainers.title }}</div>
+                                    <div class="description has-mb-32">
+                                        {{ personal_trainers.description }}
+                                    </div>
+                                    <div class="has-mb-24 icon-position">
+                                        <a href="https://www.instagram.com/{{ personal_trainers.instagram_url }}" target="_blank">
+                                            <img class="trainer-social" src="catalog/view/theme/fitpery/image/icon/instagram.svg" alt="instagram.svg" />
+                                            <span class="description">{{ personal_trainers.instagram_url }}</span></a>
+                                    </div>
+                                    <div class="has-mb-24 icon-position">
+                                        <img class="trainer-social" src="catalog/view/theme/fitpery/image/icon/education.svg" alt="education.svg" />
+                                        <span class="description">{{ personal_trainers.education }}</span>
+                                    </div>
+                                    {% if personal_trainers.coupon %}
+                                        <div class="icon-position">
+                                            <img class="trainer-social" src="catalog/view/theme/fitpery/image/icon/discount.svg" width="26" alt="discount.svg" />
+                                            <span class="description">{{ text_discount }}<span class="fnt-bold">{{ personal_trainers.coupon }}</span></span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="row col-sm-12">
+            <div class="trainer-image-list">
+                {% set count = 0 %}
+                {% for personal_trainers in personal_trainer %}
+                    {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                        {% if personal_trainer_media.media_type == 'image' %}
+                            {% set count = count + 1 %}
+                            <div class="col-sm-6 col-md-6 col-lg-3 has-mb-30 trainer-image-modal">
+                                <a href="#" data-url="{{ personal_trainer_media.media_url }}" data-index="{{ count - 1 }}" class="trainer-images">
+                                    <div class="trainers-img trainer-image-list">
+                                      <img src="{{ personal_trainer_media.media_url }}" alt="personal_trainer" />
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-12 video-row-column">
+            {% if check_data > 0 %}
+            <h1 id="video" class="has-mb-16 trainer-title">{{ text_highlights }}</h1>
+            <div class="trainer-video-list">
+                <div class="row">
+                    {% set count = 0 %}
+                    {% for personal_trainers in personal_trainer %}
+                        {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                            {% if personal_trainer_media.media_type == 'video' %}
+                                {% set count = count + 1 %}
+                                <div class="col-sm-6 col-md-6 col-lg-3 has-mb-30 trainer-video">
+                                    <a href="#" data-url="{{ personal_trainer_media.media_url }}" data-index="{{ count - 1 }}" class="image-youtube">
+                                        <div class="trainer-video-list">
+                                            <img src="https://img.youtube.com/vi/{{ personal_trainer_media.media_thumb }}/mqdefault.jpg" alt="embed-video.jpg" />
+                                            {% if personal_trainer_media.media_text %}
+                                                <div class="video-text is-text-center">
+                                                    <span class="account-text fnt-normal clr-white">{{ personal_trainer_media.media_text }}</span>
+                                                </div>
+                                            {% endif %}
+                                            <div class="video-play">
+                                                <img src="catalog/view/theme/fitpery/image/icon/icon-play.svg" alt="icon-play.svg" />
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% for personal_trainers in personal_trainer %}
+                <div class="row col-sm-12 content-row content-pd">
+                    <div class="text-center">
+                        {{ personal_trainers.content }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="row col-sm-12 text-center">
+                <div class="exercise-text">
+                    {{ text_exercise }}
+                </div>
+                <div>
+                    <a href="{{ home }}" class="btn btn-account-submit btn-text btn-video">{{ text_shopping }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-video" class="modal">
+    <div class="modal-dialog-video">
+        <div class="modal-content-video">
+            <div id="trainer-videos-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="modal-head">
+                    <button type="button" id="close-modal" class="close-video" data-dismiss="modal" aria-hidden="true">
+                        <img src="catalog/view/theme/fitpery/image/icon/icon-close.svg" alt="icon-close.svg" class="icon-video-close" />
+                    </button>
+                    <label for="close-modal" class="account-text fnt-normal clr-white close-video-text">{{ text_close_video }}</label>
+                </div>
+                <div class="modal-padding">
+                    <div class="carousel-inner">
+                        {% for personal_trainers in personal_trainer %}
+                            {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                                {% if personal_trainer_media.media_type == 'video' %}
+                                    <div class="item"></div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <ol class="carousel-indicators">
+                        {% set count = 0 %}
+                        {% for personal_trainers in personal_trainer %}
+                            {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                                {% if personal_trainer_media.media_type == 'video' %}
+                                    {% set count = count + 1 %}
+                                    <li data-target="#trainer-videos-carousel" data-slide-to="{{ count - 1 }}"></li>
+                            {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ol>
+                    <a class="left carousel-control" href="#trainer-videos-carousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                            <img src="catalog/view/theme/fitpery/image/icon/icon-left.svg" alt="icon-left.svg" />
+                        </span>
+                    </a>
+                    <a class="right carousel-control" href="#trainer-videos-carousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                             <img src="catalog/view/theme/fitpery/image/icon/icon-right.svg" alt="icon-left.svg" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-photo" class="modal">
+    <div class="modal-dialog-video">
+        <div class="modal-content-video">
+            <div id="trainer-photos-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="modal-head">
+                    <button type="button" id="close-modal-photo" class="close-video" data-dismiss="modal" aria-hidden="true">
+                        <img src="catalog/view/theme/fitpery/image/icon/icon-close.svg" alt="icon-close.svg" class="icon-video-close" />
+                    </button>
+                    <label for="close-modal-photo" class="account-text fnt-normal clr-white close-video-text">{{ text_close_photo }}</label>
+                </div>
+                <div class="modal-padding">
+                    <div class="carousel-inner">
+                        {% for personal_trainers in personal_trainer %}
+                            {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                                {% if personal_trainer_media.media_type == 'image' %}
+                                <div class="item"></div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <ol class="carousel-indicators">
+                        {% set count = 0 %}
+                        {% for personal_trainers in personal_trainer %}
+                            {% for personal_trainer_media in personal_trainers.personal_trainer_media %}
+                                {% if personal_trainer_media.media_type == 'image' %}
+                                {% set count = count + 1 %}
+                                <li data-target="#trainer-photos-carousel" data-slide-to="{{ count - 1 }}"></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ol>
+                    <a class="left carousel-control" href="#trainer-photos-carousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                            <img src="catalog/view/theme/fitpery/image/icon/icon-left.svg" alt="icon-left.svg" />
+                        </span>
+                    </a>
+                    <a class="right carousel-control" href="#trainer-photos-carousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                             <img src="catalog/view/theme/fitpery/image/icon/icon-right.svg" alt="icon-left.svg" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ footer }}
+<script>
+
+    $(function () {
+        $('.image-youtube').on('click', function (event) {
+            event.preventDefault();
+            $('#modal-video .carousel-inner .item').eq($(this).attr('data-index')).html('<div class="video-container"><iframe src="'+$(this).attr('data-url')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>');
+            $('#modal-video .carousel-inner .item').removeClass('active');
+            $('#modal-video .carousel-inner .item').eq($(this).attr('data-index')).addClass('active');
+            $('#modal-video .carousel-indicators li').removeClass('active');
+            $('#modal-video .carousel-indicators li').eq($(this).attr('data-index')).addClass('active');
+            $('#modal-video').modal('show');
+        });
+
+            $('.trainer-images').on('click', function (event) {
+                event.preventDefault();
+                $('#modal-photo .carousel-inner .item').eq($(this).attr('data-index')).html('<div class="photo-container"><img src="'+$(this).attr('data-url')+'" /></div>');
+                $('#modal-photo .carousel-inner .item').removeClass('active');
+                $('#modal-photo .carousel-inner .item').eq($(this).attr('data-index')).addClass('active');
+                $('#modal-photo .carousel-indicators li').removeClass('active');
+                $('#modal-photo .carousel-indicators li').eq($(this).attr('data-index')).addClass('active');
+                $('#modal-photo').modal('show');
+            });
+    })
+
+    $('#modal-video').on('slide.bs.carousel', function (event) {
+        var next = $(event.relatedTarget);
+        var to = next.index();
+        next.html('<div class="video-container"><iframe src="'+$('.image-youtube').eq(to).attr('data-url')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>');
+        var active = $(event.target).find('.carousel-inner > .item.active');
+        active.html('');
+    })
+
+    $('#modal-photo').on('slide.bs.carousel', function (event) {
+        var next = $(event.relatedTarget);
+        var to = next.index();
+        next.html('<div class="photo-container"><img src="'+$('.trainer-images').eq(to).attr('data-url')+'" /></div>');
+    })
+
+    $('#modal-video').on('hide.bs.modal', function (e) {
+        $('#modal-video .video-container').remove();
+        window.onscroll = function () { window.scrollTo(); };
+    });
+
+    $('#modal-photo').on('hide.bs.modal', function (e) {
+        $('#modal-photo .photo-container').remove();
+        window.onscroll = function () { window.scrollTo(); };
+    });
+
+
+    $(".carousel-control").on('click', function (e) {
+        var scroll = $(window).scrollTop();
+        window.onscroll = function () { window.scrollTo(0,scroll); };
+    });
+</script>

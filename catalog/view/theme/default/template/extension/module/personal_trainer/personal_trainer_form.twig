@@ -1,0 +1,233 @@
+{{ header }}
+<div class="container">
+    {% if error_warning %}
+        <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+    {% endif %}
+    <div class="is-text-center has-mb-48">
+        <div class="has-mt-32">
+            <span class="trainer-title text-uppercase">{{ text_form_title }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="trainers-banner">
+            {% for banner_image in banner_images %}
+                {% if banner_image.title == 'desktop' %}
+                    <img src="{{ banner_image.image }}" alt="egitmen-ol-banner-desktop.png" class="banner-desktop" />
+                {% else %}
+                    <img src="{{ banner_image.image }}" alt="egitmen-ol-banner-mobile.png" class="banner-mobile" />
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-sm-6 col-md-8 col-lg-10 col-lg-offset-1 col-sm-offset-3 col-md-offset-2 has-mb-64">
+            <div class="has-mb-64">
+                <span class="trainer-description">{{ text_register_first_line }}</span>
+                <span class="trainer-description">{{ text_register_second_line }}</span>
+            </div>
+            <div class="row has-mb-18">
+                <div class="col-sm-12">
+                    <table class="trainer-table" border="1" cellpadding="10" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="parent-column">{{ text_table_parent }}</th>
+                        <th class="trainer-column">{{ text_table_trainer }}</th>
+                        <th class="partner-column">{{ text_table_partner }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ text_table_column_first }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_second }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_third }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_fourth }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_fifth }}</td>
+                        <td></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_sixth }}</td>
+                        <td></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_seventh }}</td>
+                        <td></td>
+                        <td class="text-center txt-design text-design-mbl">{{ text_table_column_eighteenth }}</td>
+                    </tr>
+                    <tr>
+                        <td class="txt-design">{{ text_table_column_eighth }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_ninth }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_tenth }}</td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_eleventh }}</td>
+                        <td></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_twelfth }}</td>
+                        <td></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_thirteenth }}</td>
+                        <td></td>
+                        <td><img src="catalog/view/theme/fitpery/image/icon/icon-table.svg" alt="icon-table.svg" /></td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_fourteenth }}</td>
+                        <td></td>
+                        <td class="text-center txt-design txt-design-mbl">{{ text_table_column_fifteenth }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ text_table_column_sixteenth }}</td>
+                        <td></td>
+                        <td class="text-center txt-design txt-design-mbl">{{ text_table_column_seventeenth }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="has-mb-10">
+                <span class="trainer-description-line trainer-description-mbl">{{ text_special }}</span>
+            </div>
+            <div>
+                <span class="trainer-description-line trainer-description-mbl">{{ text_confirm_desc }}</span>
+            </div>
+        </div>
+            <form action="{{ action }}" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <div class="col-sm-6 col-md-8 col-lg-8 col-lg-offset-4 col-sm-offset-3 col-md-offset-4">
+                        <div class="row">
+                            <div class="required col-md-6 form-placeholder checkout-info form-padding">
+                                <input type="text" name="firstname" value="" id="input-firstname" class="form-control" required/>
+                                <span class="floating-label-trainer font-style">{{ entry_firstname }}</span>
+                                {% if error_firstname %}
+                                    <div class="text-danger">{{ error_firstname }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="required col-md-6 form-placeholder checkout-info form-padding">
+                                <input type="text" name="lastname" value="" id="input-lastname" class="form-control" required/>
+                                <span class="floating-label-trainer font-style">{{ entry_lastname }}</span>
+                                {% if error_lastname %}
+                                    <div class="text-danger">{{ error_lastname }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="required col-md-6 form-placeholder checkout-info form-padding hidden">
+                                <input type="text" name="profession" value="trainer" id="input-profession" class="form-control" required/>
+                                <span class="floating-label-trainer font-style">{{ entry_profession }}</span>
+                                {% if error_profession %}
+                                    <div class="text-danger">{{ error_profession }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="required col-md-6 form-placeholder checkout-info form-padding">
+                                <input type="text" name="telephone" value="" id="input-telephone" class="form-control" required/>
+                                <span class="floating-label-trainer font-style">{{ entry_telephone }}</span>
+                                {% if error_telephone %}
+                                    <div class="text-danger">{{ error_telephone }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 required form-placeholder checkout-info form-padding">
+                                <input type="text" name="social" value="" id="input-social" class="form-control" required/>
+                                <span class="floating-label-trainer font-style">{{ entry_social }}</span>
+                                {% if error_social %}
+                                    <div class="text-danger">{{ error_social }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-8 col-lg-8 col-lg-offset-2 col-sm-offset-3 col-md-offset-2 row-padding">
+                        <div class="row">
+                            <div class="col-md-6 form-padding">
+                                <div class="trainer-box choose-active" id="trainer" onclick="profession_choose('trainer');">
+                                    <span class="first-line">{{ text_table_trainer }}</span>
+                                    <span class="second-line">{{ text_choose }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-padding">
+                                <div class="partner-box" id="partner" onclick="profession_choose('partner');">
+                                    <span class="first-line">{{ text_table_partner }}</span>
+                                    <span class="second-line">{{ text_choose }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-12 checkbox-padding">
+                            {% if text_register_agree %}
+                                <div class="buttons">
+                                    <div class="chckboks">
+                                        {% if agree %}
+                                            <input type="checkbox" class="cb-agree" id="agree" name="agree" value="1" checked="checked"/>
+                                        {% else %}
+                                            <input type="checkbox" class="cb-agree" id="agree" name="agree" value="1"/>
+                                        {% endif %}
+                                        <label for="agree" class="lbl-agree mg-left-0"><span class="agree-text">{{ text_register_agree }}</span></label>
+                                    </div>
+                                    <div class="form-submit">
+                                        <button type="submit" class="btn btn-account-submit">
+                                            {{ text_register }}
+                                        </button>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="buttons">
+                                    <div class="pull-right">
+                                        <button type="submit" value="{{ text_register }}" class="btn btn-account-submit">
+                                            {{ text_register }}
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </fieldset>
+                <div class="form-back-text is-text-center">
+                    <a href="{{ back }}" class="account-text fnt-bold clr-black text-uppercase text-edit">{{ text_back }}</a>
+                </div>
+            </form>
+    </div>
+</div>
+<script>
+     function profession_choose(id){
+         $('#trainer').removeClass('choose-active');
+         $('#partner').removeClass('choose-active');
+         $('#' + id).addClass('choose-active');
+         var choose = $('#' + id).find('.first-line').first().text().toLowerCase();
+         $('#input-profession').attr('value', choose);
+    }
+</script>
+{{ footer }}

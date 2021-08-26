@@ -1,0 +1,57 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>{{ text_form }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i>{{ text_trainer_list }}</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td>{{ trainer_name }}</td>
+                        <td>{{ trainer_surname }}</td>
+                        <td>{{ trainer_profession }}</td>
+                        <td>{{ trainer_social }}</td>
+                        <td>{{ trainer_telephone }}</td>
+                        <td>{{ trainer_added }}</td>
+                        <td width="100" class="text-center">{{ trainer_removed }}</td>
+                    </tr>
+                    </thead>
+                    {% for personal_trainer_form in personal_trainer_forms %}
+                        <tr>
+                            <td>{{ personal_trainer_form.firstname }}</td>
+                            <td>{{ personal_trainer_form.lastname }}</td>
+                            <td>{{ personal_trainer_form.profession }}</td>
+                            <td>{{ personal_trainer_form.social }}</td>
+                            <td>{{ personal_trainer_form.telephone }}</td>
+                            <td>{{ personal_trainer_form.date_added }}</td>
+                            <td class="text-center">
+                                <a href="{{ personal_trainer_form.delete }}" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="row">
+                    <div class="col-sm-6 text-left">{{ pagination }}</div>
+                    <div class="col-sm-6 text-right">{{ results }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
